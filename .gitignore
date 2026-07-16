@@ -1,0 +1,23 @@
+# Data files — too large for git, store locally only
+data/raw/*.csv
+data/raw/*.parquet
+data/raw/*.xlsx
+
+# Model files — too large for git
+outputs/models/*.pkl
+outputs/models/*.txt
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Environment files
+.env
+venv/
+env/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
