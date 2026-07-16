@@ -65,6 +65,7 @@ Python 3.11 · LightGBM · SHAP · scikit-learn · imbalanced-learn · pandas ·
 
 ## Project Structure
 
+```
 clearflow-fraud-detection/
 ├── notebooks/
 │   └── fraud_detection.ipynb    ← Main analysis notebook
@@ -75,6 +76,7 @@ clearflow-fraud-detection/
 │   └── models/                  ← Saved model files
 ├── requirements.txt             ← Python dependencies
 └── README.md                    ← You are here
+```
 
 ## Results
 
