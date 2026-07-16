@@ -1,200 +1,100 @@
-\# 🔍 Fraud Detection — ClearFlow Financial
+# 🔍 Fraud Detection — ClearFlow Financial
 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![LightGBM](https://img.shields.io/badge/Model-LightGBM-green)
+![Status](https://img.shields.io/badge/Status-In%20Progress-orange)
 
-
-!\[Python](https://img.shields.io/badge/Python-3.11-blue)
-
-!\[LightGBM](https://img.shields.io/badge/Model-LightGBM-green)
-
-!\[Status](https://img.shields.io/badge/Status-In%20Progress-orange)
-
-
-
-\## Business Context
-
-
+## Business Context
 
 ClearFlow Financial is a fictional Canadian fintech company processing 
-
 card transactions across Interac, Visa Debit, and Mastercard rails. 
-
 With over 300,000 transactions per month across multiple provinces, 
-
 even a 2.5% fraud rate translates to millions in annual losses — and 
-
 more critically, damaged customer trust that drives churn in an already 
-
 competitive market.
 
-
-
 Fraud detection in fintech is not a simple binary problem. Every 
-
 decision the model makes carries a business cost:
 
-
-
-\- \*\*Missing fraud\*\* (False Negative) — direct financial loss, 
-
-&#x20; averaging $220 CAD per incident
-
-\- \*\*Blocking a legitimate transaction\*\* (False Positive) — no direct 
-
-&#x20; loss, but a frustrated customer who may close their account
-
-
+- **Missing fraud** (False Negative) — direct financial loss, 
+  averaging $220 CAD per incident
+- **Blocking a legitimate transaction** (False Positive) — no direct 
+  loss, but a frustrated customer who may close their account
 
 The asymmetry between these two costs, combined with a severe class 
-
-imbalance (\~2.5% fraud rate), makes standard ML approaches and 
-
+imbalance (~2.5% fraud rate), makes standard ML approaches and 
 standard evaluation metrics (accuracy) misleading and insufficient.
 
-
-
-\## Objective
-
-
+## Objective
 
 Build an end-to-end fraud detection pipeline that:
 
+1. Identifies fraudulent transactions with high recall — catching 
+   fraud before financial loss occurs
+2. Keeps the false positive rate low enough to avoid disrupting 
+   legitimate customer activity
+3. Produces explainable predictions — every flagged transaction 
+   must have human-readable reasons (regulatory requirement)
+4. Quantifies business impact in CAD — translating model performance 
+   into language that matters to business stakeholders
 
-
-1\. Identifies fraudulent transactions with high recall — catching 
-
-&#x20;  fraud before financial loss occurs
-
-2\. Keeps the false positive rate low enough to avoid disrupting 
-
-&#x20;  legitimate customer activity
-
-3\. Produces explainable predictions — every flagged transaction 
-
-&#x20;  must have human-readable reasons (regulatory requirement)
-
-4\. Quantifies business impact in CAD — translating model performance 
-
-&#x20;  into language that matters to business stakeholders
-
-
-
-\## The Data
-
-
+## The Data
 
 Four tables simulating a realistic fintech data environment:
 
-
-
 | Table | Rows | Description |
-
 |-------|------|-------------|
+| `transactions.csv` | ~300,000 | Card transactions over 18 months |
+| `customers.csv` | ~10,000 | Customer demographics & credit profile |
+| `merchants.csv` | ~2,000 | Merchant details & category codes |
+| `devices.csv` | ~300,000 | Device fingerprints per transaction |
 
-| `transactions.csv` | \~300,000 | Card transactions over 18 months |
+## Key Challenges
 
-| `customers.csv` | \~10,000 | Customer demographics \& credit profile |
+- **Class imbalance** — 2.5% fraud rate; accuracy is a meaningless metric
+- **Three distinct fraud types** — account takeover, card testing, 
+  and high-value one-shot fraud each have different signatures
+- **Concept drift** — fraud patterns shift over the 18-month window, 
+  requiring temporally-aware modeling decisions
+- **Explainability requirement** — every flagged transaction needs 
+  human-readable reason codes for compliance
 
-| `merchants.csv` | \~2,000 | Merchant details \& category codes |
-
-| `devices.csv` | \~300,000 | Device fingerprints per transaction |
-
-
-
-\## Key Challenges
-
-
-
-\- \*\*Class imbalance\*\* — 2.5% fraud rate; accuracy is a meaningless metric
-
-\- \*\*Three distinct fraud types\*\* — account takeover, card testing, 
-
-&#x20; and high-value one-shot fraud each have different signatures
-
-\- \*\*Concept drift\*\* — fraud patterns shift over the 18-month window, 
-
-&#x20; requiring temporally-aware modeling decisions
-
-\- \*\*Explainability requirement\*\* — every flagged transaction needs 
-
-&#x20; human-readable reason codes for compliance
-
-
-
-\## Technical Stack
-
-
+## Technical Stack
 
 Python 3.11 · LightGBM · SHAP · scikit-learn · imbalanced-learn · pandas · matplotlib
 
-
-
-\## Project Structure
-
-
+## Project Structure
 
 clearflow-fraud-detection/
-
 ├── notebooks/
-
-│   └── fraud\_detection.ipynb    ← Main analysis notebook
-
+│   └── fraud_detection.ipynb    ← Main analysis notebook
 ├── data/
-
 │   └── raw/                     ← Source CSV files (not tracked by git)
-
 ├── outputs/
-
 │   ├── figures/                 ← All plots generated by the notebook
-
 │   └── models/                  ← Saved model files
-
 ├── requirements.txt             ← Python dependencies
-
 └── README.md                    ← You are here
 
+## Results
 
-
-\## Results
-
-
-
-\*To be updated as the project progresses.\*
-
-
+*To be updated as the project progresses.*
 
 | Metric | Score |
-
 |--------|-------|
-
 | AUC-PR | TBD |
-
 | AUC-ROC | TBD |
-
 | Fraud Recall | TBD |
-
 | False Positive Rate | TBD |
-
 | Estimated Annual Savings | TBD |
 
+## Author
 
-
-\## Author
-
-
-
-\*\*Godoy Jr, Armstrong\*\*  
-
+**Junior Armstrong**  
 Data Scientist Portfolio Project  
+[GitHub Profile](https://github.com/Armstrong-Godoy-Jr)
 
-\[GitHub Profile](https://github.com/Armstrong-Godoy-Jr)
-
-
-
-\---
-
-\*This project uses a synthetically generated dataset designed to 
-
+---
+*This project uses a synthetically generated dataset designed to 
 reflect realistic fintech fraud detection challenges. All company 
-
-names, customer data, and transactions are fictional.\*
-
+names, customer data, and transactions are fictional.*
