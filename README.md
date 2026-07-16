@@ -90,7 +90,7 @@ clearflow-fraud-detection/
 
 ## Author
 
-**Junior Armstrong**  
+**Godoy Jr, Armstrong**  
 Data Scientist Portfolio Project  
 [GitHub Profile](https://github.com/Armstrong-Godoy-Jr)
 
